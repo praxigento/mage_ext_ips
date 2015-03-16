@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- IPS integration module to be used in Praxigento projects. -->
+<config>
+	<modules>
+		<Praxigento_Ips>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Praxigento_Ips>
+	</modules>
+</config>

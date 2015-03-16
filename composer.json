@@ -1,0 +1,13 @@
+{
+  "name": "praxigento/mage_ext_ips",
+  "type": "magento-module",
+  "license": "MIT",
+  "homepage": "https://github.com/praxigento/mage_ext_ips",
+  "description": "IPS integration module to be or not to be used in Praxigento projects.",
+  "authors": [
+    {
+      "name": "Alex Gusev",
+      "email": "alex@flancer64.com"
+    }
+  ]
+}

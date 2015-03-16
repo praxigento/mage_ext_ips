@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2015, Praxigento
+ * All rights reserved.
+ */
+-->
+<config>
+	<!-- http://www.magentocommerce.com/wiki/5_-_modules_and_development/reference/module_config.xml -->
+	<modules>
+		<Praxigento_Ips>
+			<version>0.0.1</version>
+		</Praxigento_Ips>
+	</modules>
+	<global>
+		<blocks>
+			<prxgt_ips_block>
+				<class>Praxigento_Ips_Block</class>
+			</prxgt_ips_block>
+		</blocks>
+		<events></events>
+		<helpers>
+			<!-- Default helper for module (prevents errors like "Class 'Praxigento_Ips_Helper_Data' not found in") -->
+			<!-- used in <node module="prxgt_ips_helper"> nodes -->
+			<prxgt_ips_helper>
+				<class>Praxigento_Ips_Helper</class>
+			</prxgt_ips_helper>
+		</helpers>
+		<models>
+			<prxgt_ips_model>
+				<class>Praxigento_Ips_Model</class>
+			</prxgt_ips_model>
+		</models>
+		<resources>
+			<prxgt_ips_setup>
+				<setup>
+					<module>Praxigento_Ips</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</prxgt_ips_setup>
+		</resources>
+	</global>
+	<admin>
+		<routers>
+			<prxgt_ips_arouter>
+				<use>admin</use>
+				<args>
+					<module>Praxigento_Ips</module>
+					<frontName>prxgt_ips_adminhtml</frontName>
+				</args>
+			</prxgt_ips_arouter>
+		</routers>
+	</admin>
+	<adminhtml>
+		<events></events>
+		<layout>
+			<updates>
+				<prxgt_ips>
+					<file>prxgt/ips/layout.xml</file>
+				</prxgt_ips>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Praxigento_Ips>
+					<files>
+						<default>prxgt/ips/adminhtml.csv</default>
+					</files>
+				</Praxigento_Ips>
+			</modules>
+		</translate>
+	</adminhtml>
+	<frontend>
+		<events></events>
+		<layout>
+			<updates>
+				<prxgt_ips>
+					<file>prxgt/ips/layout.xml</file>
+				</prxgt_ips>
+			</updates>
+		</layout>
+		<routers>
+			<prxgt_ips_frouter>
+				<use>standard</use>
+				<args>
+					<module>Praxigento_Ips</module>
+					<frontName>prxgt_ips_front</frontName>
+				</args>
+			</prxgt_ips_frouter>
+		</routers>
+		<translate>
+			<modules>
+				<Praxigento_Ips>
+					<files>
+						<default>prxgt/ips/frontend.csv</default>
+					</files>
+				</Praxigento_Ips>
+			</modules>
+		</translate>
+	</frontend>
+</config>

@@ -1,0 +1,7 @@
+src/app/code/community/Praxigento/Ips/ app/code/community/Praxigento/Ips/
+src/app/design/adminhtml/default/default/layout/prxgt/ips/ app/design/adminhtml/default/default/layout/prxgt/ips/
+src/app/design/adminhtml/default/default/template/prxgt/ips/ app/design/adminhtml/default/default/template/prxgt/ips/
+src/app/etc/modules/Praxigento_Ips.xml app/etc/modules/Praxigento_Ips.xml
+src/app/frontend/default/default/layout/prxgt/ips/ app/frontend/default/default/layout/prxgt/ips/
+src/app/frontend/default/default/template/prxgt/ips/ app/frontend/default/default/template/prxgt/ips/
+src/app/locale/en_US/prxgt/ips/ app/locale/en_US/prxgt/ips/
