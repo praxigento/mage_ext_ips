@@ -1,5 +1,7 @@
 # IPS integration module
 IPS integration module to be used in Praxigento projects.
+Implements some services to connect to 
+[https://www.testewallet.com/eWalletWS/ws_eWallet.asmx](https://www.testewallet.com/eWalletWS/ws_eWallet.asmx)
 
 ## Installation
 
