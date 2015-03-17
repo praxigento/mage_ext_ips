@@ -13,4 +13,15 @@ class Praxigento_Ips_Model_Own_Service_RegisterUser_Response
     extends Praxigento_Ips_Model_Own_Base_Response
 {
 
+    /**
+     * Parse decoded JSON and init response specific attributes.
+     *
+     * @param stdClass $std
+     * @return mixed
+     */
+    protected function stdDecode(stdClass $std)
+    {
+        /* do nothing */
+    }
+
 }

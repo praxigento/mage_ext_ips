@@ -11,66 +11,127 @@
  */
 abstract class Praxigento_Ips_Model_Own_Base_Response
 {
-    const FAILED = 'failed';
-    const SUCCESS = 'success';
-    /**
-     * Array of error messages.
-     *
-     * @var array
+    /* See appendix A in https://www.i-payout.com/api/LoadFile.ashx?f=I-Payout%20eWallet%20webService%20v%204.9.pdf */
+    const CODE_INTERNAL_ERROR = -1;
+    const CODE_NO_ERROR = 0;
+    const CODE_USERNAME_EXISTS = -12;
+
+    /*
+     * Common attributes for all responses.
      */
-    private $_errorMsg = array();
-    /**
-     * Result code (error code or success code).
-     * @var
-     */
-    private $_resultCode = self::FAILED;
+    private $m_Code;
+    private $m_Text;
+    private $TransactionRefID;
+    private $LogTransactionID;
+    private $ACHTransactionID;
+    private $ProcessorTransactionRefNumber;
+    private $CustomerFeeAmount;
+    private $CurrencyCode;
 
     /**
-     * Array of error messages.
-     *
-     * @return array
+     * @return mixed
      */
-    public function getErrorMsg()
+    public function getCommonACHTransactionID()
     {
-        return $this->_errorMsg;
-    }
-
-    /**
-     * @param array $errorMsg
-     */
-    public function setErrorMsg($errorMsg)
-    {
-        if (is_array($errorMsg)) {
-            $this->_errorMsg = $errorMsg;
-        } else {
-            $this->_errorMsg = array($errorMsg);
-        }
+        return $this->ACHTransactionID;
     }
 
     /**
      * @return mixed
      */
-    public function getResultCode()
+    public function getCommonCurrencyCode()
     {
-        return $this->_resultCode;
+        return $this->CurrencyCode;
     }
 
     /**
-     * @param mixed $val
+     * @return mixed
      */
-    public function setResultCode($val)
+    public function getCommonCustomerFeeAmount()
     {
-        $this->_resultCode = $val;
+        return $this->CustomerFeeAmount;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCommonLogTransactionID()
+    {
+        return $this->LogTransactionID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommonMessageCode()
+    {
+        return $this->m_Code;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommonMessageText()
+    {
+        return $this->m_Text;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommonProcessorTransactionRefNumber()
+    {
+        return $this->ProcessorTransactionRefNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommonTransactionRefID()
+    {
+        return $this->TransactionRefID;
+    }
+
+    /**
+     * Return 'true' if response is processed successfully.
+     * @return bool
+     */
     public function isSucceed()
     {
-        $result = ($this->_resultCode == self::SUCCESS);
+        $result = ($this->m_Code == self::CODE_NO_ERROR);
         return $result;
     }
 
-    public function setSucceed()
+    /**
+     * Decode JSON string and setup response attributes.
+     *
+     * @param $json
+     * @return string
+     */
+    public function jsonDecode($json)
     {
-        $this->_resultCode = self::SUCCESS;
+        $std = json_decode($json);
+        if (isset($std->response)) {
+            /* decode common attributes */
+            $resp = $std->response;
+            if (isset ($resp->m_Code)) $this->m_Code = $resp->m_Code;
+            if (isset ($resp->m_Text)) $this->m_Text = $resp->m_Text;
+            if (isset ($resp->LogTransactionID)) $this->LogTransactionID = $resp->LogTransactionID;
+            if (isset ($resp->TransactionRefID)) $this->TransactionRefID = $resp->TransactionRefID;
+            if (isset ($resp->ACHTransactionID)) $this->ACHTransactionID = $resp->ACHTransactionID;
+            if (isset ($resp->ProcessorTransactionRefNumber)) $this->ProcessorTransactionRefNumber = $resp->ProcessorTransactionRefNumber;
+            if (isset ($resp->CustomerFeeAmount)) $this->CustomerFeeAmount = $resp->CustomerFeeAmount;
+            if (isset ($resp->CurrencyCode)) $this->CurrencyCode = $resp->CurrencyCode;
+            /* decode response specific attributes */
+            $this->stdDecode($std);
+        }
     }
+
+    /**
+     * Parse decoded JSON and init response specific attributes.
+     *
+     * @param stdClass $std
+     * @return mixed
+     */
+    protected abstract function stdDecode(stdClass $std);
 }

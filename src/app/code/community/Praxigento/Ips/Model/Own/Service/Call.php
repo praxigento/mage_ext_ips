@@ -12,12 +12,14 @@
 class Praxigento_Ips_Model_Own_Service_Call extends Praxigento_Ips_Model_Own_Base_Call
 {
     /**
-     * @param Praxigento_Ips_Model_Own_Service_GetCurrenceyBalance_Request $req
-     * @return Praxigento_Ips_Model_Own_Service_GetCurrenceyBalance_Response
+     * @param Praxigento_Ips_Model_Own_Service_GetCurrencyBalance_Request $req
+     * @return Praxigento_Ips_Model_Own_Service_GetCurrencyBalance_Response
      */
-    public function getCurrenceyBalance(Praxigento_Ips_Model_Own_Service_GetCurrenceyBalance_Request $req)
+    public function getCurrencyBalance(Praxigento_Ips_Model_Own_Service_GetCurrencyBalance_Request $req)
     {
-        $result = Mage::getModel('prxgt_ips_model/own_service_getCurrenceyBalance_response');
+        $result = Mage::getModel('prxgt_ips_model/own_service_getCurrencyBalance_response');
+        $json = $this->_call($req);
+        $result->jsonDecode($json);
         return $result;
     }
 
@@ -28,9 +30,8 @@ class Praxigento_Ips_Model_Own_Service_Call extends Praxigento_Ips_Model_Own_Bas
     public function registerUser(Praxigento_Ips_Model_Own_Service_RegisterUser_Request $req)
     {
         $result = Mage::getModel('prxgt_ips_model/own_service_registerUser_response');
-        /**/
-        $resp = $this->_call($req);
-        /**/
+        $json = $this->_call($req);
+        $result->jsonDecode($json);
         return $result;
     }
 
