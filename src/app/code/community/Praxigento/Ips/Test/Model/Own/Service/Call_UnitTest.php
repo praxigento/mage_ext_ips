@@ -90,7 +90,7 @@ class Praxigento_Ips_Test_Model_Own_Service_Call_UnitTest extends PHPUnit_Framew
         $entry->setComments('from test units');
         $entry->setMerchantReferenceID('ref id');
         $req->addAccountsEntry($entry);
-        $req->setPartnerBatchID(1);
+        $req->setPartnerBatchID(2);
         $resp = $call->load($req);
         $this->assertTrue($resp instanceof Praxigento_Ips_Model_Own_Service_Load_Response);
         /* user should be created */
