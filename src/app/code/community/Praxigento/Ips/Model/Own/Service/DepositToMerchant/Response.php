@@ -5,11 +5,11 @@
  */
 
 /**
- * Request for 'eWallet_Load' operation.
+ * Request for 'eWallet_DepositToMerchant' operation.
  *
  * User: Alex Gusev <alex@flancer64.com>
  */
-class Praxigento_Ips_Model_Own_Service_Load_Response
+class Praxigento_Ips_Model_Own_Service_DepositToMerchant_Response
     extends Praxigento_Ips_Model_Own_Base_Response
 {
 

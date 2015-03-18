@@ -5,7 +5,7 @@
  */
 
 /**
- * Request for 'eWallet_GetCurrencyBalance' operation.
+ * Request for 'eWallet_Load' operation.
  *
  * User: Alex Gusev <alex@flancer64.com>
  */

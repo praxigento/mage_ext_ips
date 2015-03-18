@@ -40,7 +40,7 @@ class Praxigento_Ips_Model_Own_Service_Call extends Praxigento_Ips_Model_Own_Bas
     }
 
     /**
-     * This function makes a request to load eWallets.
+     * This function makes a request to increase eWallet balance.
      *
      * @param Praxigento_Ips_Model_Own_Service_Load_Request $req
      * @return Praxigento_Ips_Model_Own_Service_Load_Response
@@ -48,6 +48,20 @@ class Praxigento_Ips_Model_Own_Service_Call extends Praxigento_Ips_Model_Own_Bas
     public function load(Praxigento_Ips_Model_Own_Service_Load_Request $req)
     {
         $result = Mage::getModel('prxgt_ips_model/own_service_load_response');
+        $json = $this->_call($req);
+        $result->jsonDecode($json);
+        return $result;
+    }
+
+    /**
+     * This function makes a request to reduce eWallet balance.
+     *
+     * @param Praxigento_Ips_Model_Own_Service_DepositToMerchant_Request $req
+     * @return Praxigento_Ips_Model_Own_Service_DepositToMerchant_Response
+     */
+    public function depositToMerchant(Praxigento_Ips_Model_Own_Service_DepositToMerchant_Request $req)
+    {
+        $result = Mage::getModel('prxgt_ips_model/own_service_depositToMerchant_response');
         $json = $this->_call($req);
         $result->jsonDecode($json);
         return $result;

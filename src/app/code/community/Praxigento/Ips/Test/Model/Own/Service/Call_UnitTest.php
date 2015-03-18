@@ -96,4 +96,22 @@ class Praxigento_Ips_Test_Model_Own_Service_Call_UnitTest extends PHPUnit_Framew
         /* user should be created */
         $this->assertFalse($resp->isSucceed());
     }
+
+    public function test_depositToMerchant()
+    {
+        /** @var  $call Praxigento_Ips_Model_Own_Service_Call */
+        $call = $this->_initServiceCall();
+
+        /** @var  $req Praxigento_Ips_Model_Own_Service_DepositToMerchant_Request */
+        $req = Mage::getModel('prxgt_ips_model/own_service_depositToMerchant_request');
+        $req->setUserName('tpartyrep');
+        $req->setAmount('10.00');
+        $req->setCurrencyCode('USD');
+        $req->setReason('from test units');
+        $req->setMerchantReferenceID('ref id');
+        $resp = $call->depositToMerchant($req);
+        $this->assertTrue($resp instanceof Praxigento_Ips_Model_Own_Service_DepositToMerchant_Response);
+        /* user should be created */
+        $this->assertFalse($resp->isSucceed());
+    }
 }
