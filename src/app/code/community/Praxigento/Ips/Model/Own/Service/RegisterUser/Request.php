@@ -50,4 +50,44 @@ class Praxigento_Ips_Model_Own_Service_RegisterUser_Request
         $this->DateOfBirth = $this->_formatDate(DateTime::createFromFormat('Y/m/d', '1973/01/01'));
     }
 
+    /**
+     * @param string $val
+     */
+    public function setDateOfBirth($val)
+    {
+        $this->DateOfBirth = $val;
+    }
+
+    /**
+     * @param string $val
+     */
+    public function setEmailAddress($val)
+    {
+        $this->EmailAddress = $val;
+    }
+
+    /**
+     * @param string $val
+     */
+    public function setFirstName($val)
+    {
+        $this->FirstName = $val;
+    }
+
+    /**
+     * @param string $val
+     */
+    public function setLastName($val)
+    {
+        $this->LastName = $val;
+    }
+
+    /**
+     * @param string $val
+     */
+    public function setUserName($val)
+    {
+        $this->UserName = $val;
+    }
+
 }

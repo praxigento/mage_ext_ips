@@ -6,6 +6,7 @@
 
 /**
  * Base class for all services calls responses.
+ * All response classes has getters only, setters are useless for responses.
  *
  * User: Alex Gusev <alex@flancer64.com>
  */
@@ -111,6 +112,17 @@ abstract class Praxigento_Ips_Model_Own_Base_Response
     public function jsonDecode($json)
     {
         $std = json_decode($json);
+        $this->stdDecode($std);
+    }
+
+    /**
+     * Parse decoded JSON and init response specific attributes.
+     *
+     * @param stdClass $std
+     * @return mixed
+     */
+    protected function stdDecode(stdClass $std)
+    {
         if (isset($std->response)) {
             /* decode common attributes */
             $resp = $std->response;
@@ -122,16 +134,6 @@ abstract class Praxigento_Ips_Model_Own_Base_Response
             if (isset ($resp->ProcessorTransactionRefNumber)) $this->ProcessorTransactionRefNumber = $resp->ProcessorTransactionRefNumber;
             if (isset ($resp->CustomerFeeAmount)) $this->CustomerFeeAmount = $resp->CustomerFeeAmount;
             if (isset ($resp->CurrencyCode)) $this->CurrencyCode = $resp->CurrencyCode;
-            /* decode response specific attributes */
-            $this->stdDecode($std);
         }
     }
-
-    /**
-     * Parse decoded JSON and init response specific attributes.
-     *
-     * @param stdClass $std
-     * @return mixed
-     */
-    protected abstract function stdDecode(stdClass $std);
 }

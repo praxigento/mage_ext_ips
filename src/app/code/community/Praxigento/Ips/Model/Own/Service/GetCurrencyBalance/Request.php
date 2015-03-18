@@ -27,27 +27,11 @@ class Praxigento_Ips_Model_Own_Service_GetCurrencyBalance_Request
     public $CurrencyCode;
 
     /**
-     * @return string
-     */
-    public function getCurrencyCode()
-    {
-        return $this->CurrencyCode;
-    }
-
-    /**
      * @param string $CurrencyCode
      */
     public function setCurrencyCode($CurrencyCode)
     {
         $this->CurrencyCode = $CurrencyCode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUserName()
-    {
-        return $this->UserName;
     }
 
     /**

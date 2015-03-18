@@ -6,6 +6,7 @@
 
 /**
  * Base class for all service calls requests.
+ * All request classes has setters only, getters are useless for requests.
  *
  * User: Alex Gusev <alex@flancer64.com>
  */

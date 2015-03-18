@@ -63,10 +63,10 @@ class Praxigento_Ips_Test_Model_Own_Service_Call_UnitTest extends PHPUnit_Framew
 
         /** @var  $req Praxigento_Ips_Model_Own_Service_RegisterUser_Request */
         $req = Mage::getModel('prxgt_ips_model/own_service_registerUser_request');
-        $req->UserName = self::TEST_USERNAME;
-        $req->FirstName = 'WSTest';
-        $req->LastName = 'Test';
-        $req->EmailAddress = 'user@aol.com';
+        $req->setUserName(self::TEST_USERNAME);
+        $req->setFirstName('WSTest');
+        $req->setLastName('Test');
+        $req->setEmailAddress('user@aol.com');
         $resp = $call->registerUser($req);
         $this->assertTrue($resp instanceof Praxigento_Ips_Model_Own_Service_RegisterUser_Response);
         /* user should be created */
@@ -75,5 +75,25 @@ class Praxigento_Ips_Test_Model_Own_Service_Call_UnitTest extends PHPUnit_Framew
             Praxigento_Ips_Model_Own_Base_Response::CODE_USERNAME_EXISTS,
             $resp->getCommonMessageCode()
         );
+    }
+
+    public function test_load()
+    {
+        /** @var  $call Praxigento_Ips_Model_Own_Service_Call */
+        $call = $this->_initServiceCall();
+
+        /** @var  $req Praxigento_Ips_Model_Own_Service_Load_Request */
+        $req = Mage::getModel('prxgt_ips_model/own_service_load_request');
+        $entry = Mage::getModel('prxgt_ips_model/own_bean_eWalletLoad');
+        $entry->setUserName('tpartyrep');
+        $entry->setAmount('10.00');
+        $entry->setComments('from test units');
+        $entry->setMerchantReferenceID('ref id');
+        $req->addAccountsEntry($entry);
+        $req->setPartnerBatchID(1);
+        $resp = $call->load($req);
+        $this->assertTrue($resp instanceof Praxigento_Ips_Model_Own_Service_Load_Response);
+        /* user should be created */
+        $this->assertFalse($resp->isSucceed());
     }
 }

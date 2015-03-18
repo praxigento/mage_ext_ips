@@ -24,6 +24,7 @@ class Praxigento_Ips_Model_Own_Service_GetCurrencyBalance_Response
 
     protected function stdDecode(stdClass $std)
     {
+        parent::stdDecode($std);
         if (isset ($std->Balance)) $this->Balance = $std->Balance;
     }
 }
