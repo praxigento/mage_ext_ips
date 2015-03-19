@@ -26,7 +26,11 @@ abstract class Praxigento_Ips_Model_Own_Base_Call
     function __construct()
     {
         $this->_log = Praxigento_Ips_Logger::getLogger(__CLASS__);
-        /* TODO init attributes from Magento SysConfig (AD-112) */
+        /* inversion !!! */
+        $this->_isInTestMode = !Praxigento_Ips_Config::cfgStoreIpsProductionEnabled();
+        $this->_isInLogPrintMode = Praxigento_Ips_Config::cfgStoreIpsLogsEnabled();
+        $this->_merchantGuid = Praxigento_Ips_Config::cfgStoreIpsMerchantGuid();
+        $this->_merchantPassword = Praxigento_Ips_Config::cfgStoreIpsMerchantPassword();
     }
 
     /**

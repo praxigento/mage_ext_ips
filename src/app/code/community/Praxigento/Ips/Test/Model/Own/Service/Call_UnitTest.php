@@ -13,8 +13,6 @@ include_once('../../../phpunit_bootstrap.php');
  */
 class Praxigento_Ips_Test_Model_Own_Service_Call_UnitTest extends PHPUnit_Framework_TestCase
 {
-    const MERCHANT_GUID = 'cca15e27-49a2-4191-9b5b-cc9fa3d41f5f';
-    const MERCHANT_PASS = 'zNu2PEwvyP';
     const TEST_CURR = 'USD';
     const TEST_USERNAME = 'json_user_1';
 
@@ -51,8 +49,8 @@ class Praxigento_Ips_Test_Model_Own_Service_Call_UnitTest extends PHPUnit_Framew
         $result = Mage::getModel('prxgt_ips_model/own_service_call');
         $this->assertNotNull($result);
         $result->setIsInTestMode(true);
-        $result->setMerchantGuid(self::MERCHANT_GUID);
-        $result->setMerchantPassword(self::MERCHANT_PASS);
+        $result->setMerchantGuid(Praxigento_Ips_Config::cfgStoreIpsMerchantGuid());
+        $result->setMerchantPassword(Praxigento_Ips_Config::cfgStoreIpsMerchantPassword());
         return $result;
     }
 
