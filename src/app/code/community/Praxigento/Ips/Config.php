@@ -34,4 +34,11 @@ class Praxigento_Ips_Config
         $result = filter_var($result, FILTER_VALIDATE_BOOLEAN);
         return $result;
     }
+
+    public static function cfgStoreIpsAllowAutoloads($store = null)
+    {
+        $result = Mage::getStoreConfig('prxgt_store_setup/ips/allow_autoloads_yesno', $store);
+        $result = filter_var($result, FILTER_VALIDATE_BOOLEAN);
+        return $result;
+    }
 }
