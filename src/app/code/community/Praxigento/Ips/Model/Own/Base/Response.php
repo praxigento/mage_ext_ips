@@ -112,7 +112,9 @@ abstract class Praxigento_Ips_Model_Own_Base_Response
     public function jsonDecode($json)
     {
         $std = json_decode($json);
-        $this->stdDecode($std);
+        if ($std instanceof stdClass) {
+            $this->stdDecode($std);
+        }
     }
 
     /**

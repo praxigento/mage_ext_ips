@@ -56,6 +56,7 @@ abstract class Praxigento_Ips_Model_Own_Base_Call
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         $result = curl_exec($ch);
         curl_close($ch);
         if ($this->_isInLogPrintMode) {
