@@ -23,11 +23,11 @@ class Praxigento_Ips_Model_Own_Service_Load_Request
      * If set to TRUE - automatically approve and load
      * payout into eWallets. A batch will be automatically
      * closed, and no other loads can be added into this
-     * batch.
+     * batch. If null - Praxigento_Ips_Config::cfgStoreIpsAllowAutoloads() is used.
      *
      * @var bool
      */
-    public $AutoLoad = false;
+    public $AutoLoad = null;
     /**
      * Currency code of the transaction.
      *

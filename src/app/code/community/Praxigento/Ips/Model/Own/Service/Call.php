@@ -49,7 +49,7 @@ class Praxigento_Ips_Model_Own_Service_Call extends Praxigento_Ips_Model_Own_Bas
     {
         $result = Mage::getModel('prxgt_ips_model/own_service_load_response');
         $req->setAllowDuplicates(false);
-        $req->setAutoLoad(Praxigento_Ips_Config::cfgStoreIpsAllowAutoloads());
+        if (is_null($req->AutoLoad)) $req->setAutoLoad(Praxigento_Ips_Config::cfgStoreIpsAllowAutoloads());
         $json = $this->_call($req);
         $result->jsonDecode($json);
         return $result;
